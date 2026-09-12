@@ -64,6 +64,24 @@ bool LinkedList::insert_before(int value, int new_value)
     return false;
  }
 
+ bool LinkedList::insert_after(int value, int new_value)
+ {
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        if (current->data == value)
+        {
+            Node* new_node = new Node{new_value, current->next};
+            current->next = new_node;
+            return true;
+        }
+        current = current->next;
+    }
+
+    return false;
+ }
+
  void LinkedList::print() const
  {
     const Node* current = head;

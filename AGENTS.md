@@ -6,7 +6,7 @@ Put production code in `src/`, public headers in `include/`, and tests in `tests
 
 ## Build, Test, and Development Commands
 
-No build system is committed yet. When adding one, prefer CMake and document any new dependencies here. A typical local workflow should be:
+Use CMake with the C++17 compiler configured on the machine. Build and test locally with:
 
 ```powershell
 cmake -S . -B build
@@ -14,7 +14,7 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-These commands configure, compile, and test. Keep build artifacts in `build/`, ignored by Git.
+These commands configure, compile, and run CTest. Keep build artifacts in `build/`, ignored by Git.
 
 ## Communication
 

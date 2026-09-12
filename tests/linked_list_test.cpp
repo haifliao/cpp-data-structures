@@ -70,4 +70,20 @@ int main()
     std::cout.rdbuf(original_buffer);
 
     assert(empty_output.str() == "\n");
+
+    // Insert a value after a node in the middle of the list.
+    LinkedList after_list;
+    after_list.push_back(10);
+    after_list.push_back(20);
+    after_list.push_back(30);
+
+    const bool after_inserted = after_list.insert_after(20, 25);
+    assert(after_inserted);
+
+    std::ostringstream after_output;
+    original_buffer = std::cout.rdbuf(after_output.rdbuf());
+    after_list.print();
+    std::cout.rdbuf(original_buffer);
+
+    assert(after_output.str() == "10 20 25 30 \n");
 }
