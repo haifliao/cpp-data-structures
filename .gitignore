@@ -1,0 +1,10 @@
+# C++ build artifacts
+*.obj
+*.o
+*.exe
+
+# Build directories
+build/
+
+# Local editor settings
+.vscode/

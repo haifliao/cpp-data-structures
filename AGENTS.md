@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This C++ data-structures project puts production code in `src/`, public headers in `include/`, and tests in `tests/`. Keep one structure per focused module, for example `include/stack.hpp` and `src/stack.cpp`. Put example programs in `examples/`; do not commit generated output.
+Put production code in `src/`, public headers in `include/`, and tests in `tests/`. Keep one structure per module, for example `include/stack.hpp` and `src/stack.cpp`. Put examples in `examples/`; do not commit generated output.
 
 ## Build, Test, and Development Commands
 
@@ -14,7 +14,11 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-These commands configure, compile, and run the test suite. Keep build artifacts in `build/`, which should be ignored by Git.
+These commands configure, compile, and test. Keep build artifacts in `build/`, ignored by Git.
+
+## Communication
+
+Reply in Chinese, even when the contributor writes in English.
 
 ## Coding Style & Naming Conventions
 
@@ -33,7 +37,7 @@ Do not provide a complete exercise answer immediately. Explain *why* an approach
 
 ## Testing Guidelines
 
-Add tests in `tests/` alongside each new structure, using descriptive names such as `stack_pop_empty_throws`. Cover normal behavior, boundary conditions, invalid inputs, copy/move behavior, and resource ownership. Use a lightweight C++ test framework (for example, Catch2 or GoogleTest) once selected, and register all tests with CTest.
+Add tests in `tests/` alongside each new structure, using descriptive names such as `stack_pop_empty_throws`. Cover normal behavior, boundaries, invalid inputs, copy/move behavior, and ownership. Use a lightweight C++ test framework (for example, Catch2 or GoogleTest), and register tests with CTest.
 
 ## Commit & Pull Request Guidelines
 
