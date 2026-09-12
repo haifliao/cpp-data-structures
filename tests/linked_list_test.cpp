@@ -5,8 +5,8 @@
 #include <sstream>
 #include <type_traits>
 
-static_assert(!std::is_copy_constructible_v<LinkedList>);
-static_assert(!std::is_copy_assignable_v<LinkedList>);
+static_assert(!std::is_copy_constructible<LinkedList>::value, "LinkedList must not be copy constructible");
+static_assert(!std::is_copy_assignable<LinkedList>::value, "LinkedList must not be copy assignable");
 
 int main()
 {
@@ -86,4 +86,48 @@ int main()
     std::cout.rdbuf(original_buffer);
 
     assert(after_output.str() == "10 20 25 30 \n");
+
+    // Insert a value after the tail node.
+    LinkedList tail_list;
+    tail_list.push_back(10);
+    tail_list.push_back(20);
+    tail_list.push_back(30);
+
+    const bool tail_inserted = tail_list.insert_after(30, 35);
+    assert(tail_inserted);
+
+    std::ostringstream tail_output;
+    original_buffer = std::cout.rdbuf(tail_output.rdbuf());
+    tail_list.print();
+    std::cout.rdbuf(original_buffer);
+    assert(tail_output.str() == "10 20 30 35 \n");
+
+    // Return false and keep the list unchanged when the target is missing.
+    LinkedList unchanged_after_list;
+    unchanged_after_list.push_back(10);
+    unchanged_after_list.push_back(20);
+    unchanged_after_list.push_back(30);
+
+    const bool missing_after_inserted = unchanged_after_list.insert_after(99, 15);
+    assert(!missing_after_inserted);
+
+    std::ostringstream unchanged_after_output;
+    original_buffer = std::cout.rdbuf(unchanged_after_output.rdbuf());
+    unchanged_after_list.print();
+    std::cout.rdbuf(original_buffer);
+
+    assert(unchanged_after_output.str() == "10 20 30 \n");
+
+    //return false and keep an empty list unchanged.
+    LinkedList empty_after_list;
+
+    const bool empty_after_inserted = empty_after_list.insert_after(10, 5);
+    assert(!empty_after_inserted);
+
+    std::ostringstream empty_after_output;
+    original_buffer = std::cout.rdbuf(empty_after_output.rdbuf());
+    empty_after_list.print();
+    std::cout.rdbuf(original_buffer);
+
+    assert(empty_after_output.str() == "\n");
 }
