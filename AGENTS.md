@@ -22,7 +22,7 @@ Reply in Chinese, even when the contributor writes in English.
 
 ## Coding Style & Naming Conventions
 
-Use C++17 or newer unless specified otherwise. Indent with four spaces; put braces on their own line. Name types in `PascalCase`, functions and variables in `snake_case`, and constants in `kPascalCase`. Prefer small, focused classes and RAII; avoid raw owning pointers. Keep headers self-contained.
+Use C++17 or newer unless specified otherwise. Indent with four spaces; put braces on their own line. Name types in `PascalCase`; name functions, variables, and constants in `snake_case`. Prefer small, focused classes and RAII; avoid raw owning pointers. Keep headers self-contained.
 
 ## Learning Workflow
 
